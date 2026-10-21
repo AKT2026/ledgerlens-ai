@@ -124,6 +124,15 @@ else:
         use_container_width=True,
         hide_index=True,
     )
+    
+    # NEW: CSV Export for Finance Teams
+    csv_data = filtered_df.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="📥 Download Audit Report (CSV)",
+        data=csv_data,
+        file_name=f"ledgerlens_audit_export_{datetime.now().strftime('%Y%m%d')}.csv",
+        mime="text/csv",
+    )
 
     st.markdown("---")
 
@@ -156,7 +165,6 @@ else:
 
             st.write(f"**Processor Status**: `{selected_row['status']}`")
 
-            # --- AI Copilot Section ---
             st.markdown("---")
             st.markdown("#### 🤖 AI Investigation Co-Pilot (Grounded Gemini Layer)")
             st.caption("Synthesizes deterministic facts into banking root-cause analysis and operational actions.")
@@ -170,7 +178,6 @@ else:
             if f"ai_report_{selected_ref}" in st.session_state:
                 report = st.session_state[f"ai_report_{selected_ref}"]
 
-                # Display risk badge
                 risk_colors = {"LOW": "🟢", "MEDIUM": "🟡", "HIGH": "🔴"}
                 st.markdown(f"**Operational Risk**: {risk_colors.get(report.operational_risk, '⚪')} `{report.operational_risk}`")
                 st.write(f"**Analysis**: {report.root_cause_analysis}")
