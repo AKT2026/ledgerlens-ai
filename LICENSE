@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 MIT License
 
 Copyright (c) 2026 Ashwani Tripathi
+=======
+﻿MIT License
+
+Copyright (c) 2026 Ashwani Kumar Tripathi
+>>>>>>> 7d7fce0 (feat: complete Phase 1 deterministic reconciliation engine, tests, and docs)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
